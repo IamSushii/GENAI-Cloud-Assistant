@@ -39,15 +39,36 @@ public class GenAIAgent {
             }
 
             // 4. The HTML Web Interface
-            String html = "<html><body style='font-family: Arial; max-width: 600px; margin: 40px auto; background-color: #f9f9f9;'>" +
-                          "<h2 style='color: #333;'>Java Enterprise AI Server</h2>" +
-                          "<form method='GET' action='/'>" +
-                          "<input type='text' name='prompt' placeholder='Ask the AI...' style='width: 75%; padding: 10px; border: 1px solid #ccc;' required>" +
-                          "<button type='submit' style='width: 20%; padding: 10px; background: #007bff; color: white; border: none;'>Send</button>" +
-                          "</form>" +
-                          "<div style='margin-top: 20px; padding: 20px; background: white; border: 1px solid #ddd; border-radius: 5px;'>" +
-                          "<strong>AI Response:</strong><br><br>" + botReply +
-                          "</div></body></html>";
+            String html = "<!DOCTYPE html>" +
+    "<html lang='en'>" +
+    "<head>" +
+    "    <meta charset='UTF-8'>" +
+    "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
+    "    <title>Enterprise AI Assistant</title>" +
+    "    <script src='https://cdn.tailwindcss.com'></script>" +
+    "</head>" +
+    "<body class='bg-gray-900 text-gray-100 h-screen flex flex-col justify-between'>" +
+    "    <!-- Header -->" +
+    "    <header class='bg-gray-800 border-b border-gray-700 p-4 text-center font-bold text-lg text-blue-400'>" +
+    "        Enterprise AI Cloud Assistant" +
+    "    </header>" +
+    "    <!-- Chat Container -->" +
+    "    <main id='chat-container' class='flex-1 overflow-y-auto p-4 space-y-4 max-w-3xl w-full mx-auto'>" +
+    "        <div class='flex items-start space-x-3'>" +
+    "            <div class='bg-blue-600 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold'>AI</div>" +
+    "            <div class='bg-gray-800 p-3 rounded-lg max-w-lg text-sm'>" + (botReply != null ? botReply : "Hello! I am your enterprise Java AI assistant. How can I help you today?") + "</div>" +
+    "        </div>" +
+    "    </main>" +
+    "    <!-- Input Footer -->" +
+    "    <footer class='bg-gray-800 border-t border-gray-700 p-4'>" +
+    "        <form method='GET' action='/' class='max-w-3xl mx-auto flex gap-2'>" +
+    "            <input type='text' name='prompt' placeholder='Type your message here...' required " +
+    "                class='flex-1 bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 text-sm'>" +
+    "            <button type='submit' class='bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg text-sm font-semibold transition'>Send</button>" +
+    "        </form>" +
+    "    </footer>" +
+    "</body>" +
+    "</html>";
 
             byte[] response = html.getBytes();
             exchange.sendResponseHeaders(200, response.length);
