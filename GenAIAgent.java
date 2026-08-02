@@ -11,7 +11,7 @@ import java.net.http.HttpResponse;
 
 public class GenAIAgent {
     // 1. Insert your Google Gemini API Key here
-    private static final String API_KEY = "YOUR_API_KEY_HERE";
+    private static final String API_KEY = System.getenv("GEMINI_API_KEY");
     private static final String URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=" + API_KEY;
     private static final HttpClient client = HttpClient.newHttpClient();
 
